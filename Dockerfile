@@ -1,11 +1,13 @@
-FROM node:8
+FROM node:10
 
-COPY [".", "/usr/src/"]
+COPY ["package.json", "package.json", "/usr/src/"]
 
 WORKDIR /usr/src
 
-RUN npm install
+RUN npm i
+
+COPY [".", "/usr/src/"]
 
 EXPOSE 3000
 
-CMD ["node", "index.js"]
+CMD [ "npx", "nodemon", "index.js" ]
